@@ -29,13 +29,21 @@ trait message4{
   }
 }
 
+trait message5{
+  public function msg5(){
+    echo 'Hello mess 5';
+  }
+}
+
 class Welcome {
   use message1,message2;
   use message3,message4 {
     message3::say_1 insteadof message4;
     message4::say_2 insteadof message3;
   }
-
+  use message5{
+    msg5 as public wel_msg;
+  }
 }
 
 $obj = new Welcome();
@@ -46,4 +54,7 @@ echo '<br>';
 $obj->say_1();
 echo '<br>';
 $obj->say_2();
+echo '<br>';
+$obj->wel_msg();
+
 ?>
