@@ -11,19 +11,39 @@ trait message2 {
   }
 }
 
-class Welcome {
-  use message1;
+trait message3{
+  public function say_1(){
+    echo 'Hello mess 3.1';
+  }
+  public function say_2(){
+    echo 'Hello mess 3.2';
+  }
 }
 
-class Welcome2 {
-  use message1, message2;
+trait message4{
+  public function say_1(){
+    echo 'Hello mess 4.1';
+  }
+  public function say_2(){
+    echo 'Hello mess 4.2';
+  }
+}
+
+class Welcome {
+  use message1,message2;
+  use message3,message4 {
+    message3::say_1 insteadof message4;
+    message4::say_2 insteadof message3;
+  }
+
 }
 
 $obj = new Welcome();
 $obj->msg1();
 echo "<br>";
-
-$obj2 = new Welcome2();
-$obj2->msg1();
-$obj2->msg2();
+$obj->msg2();
+echo '<br>';
+$obj->say_1();
+echo '<br>';
+$obj->say_2();
 ?>
