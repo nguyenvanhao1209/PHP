@@ -1,0 +1,10 @@
+<?php
+echo '<pre>';
+
+$a=array("a"=>"red","b"=>"green","c"=>"blue");
+echo array_shift($a);
+echo '<br>';
+print_r ($a);
+
+echo '</pre>';
+?>
